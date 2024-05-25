@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		134C6F4F2BFBFA12008C0C1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F4E2BFBFA12008C0C1E /* AppDelegate.swift */; };
-		134C6F512BFBFA12008C0C1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F502BFBFA12008C0C1E /* SceneDelegate.swift */; };
-		134C6F532BFBFA12008C0C1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F522BFBFA12008C0C1E /* ViewController.swift */; };
-		134C6F582BFBFA17008C0C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134C6F572BFBFA17008C0C1E /* Assets.xcassets */; };
-		134C6F632BFC063C008C0C1E /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F622BFC063C008C0C1E /* NewViewController.swift */; };
+		134C6F732C01FC37008C0C1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F722C01FC37008C0C1E /* AppDelegate.swift */; };
+		134C6F752C01FC37008C0C1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F742C01FC37008C0C1E /* SceneDelegate.swift */; };
+		134C6F772C01FC37008C0C1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6F762C01FC37008C0C1E /* ViewController.swift */; };
+		134C6F7C2C01FC39008C0C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134C6F7B2C01FC39008C0C1E /* Assets.xcassets */; };
+		134C6FA72C020259008C0C1E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C6FA62C020259008C0C1E /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		134C6F4B2BFBFA12008C0C1E /* valiaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = valiaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		134C6F4E2BFBFA12008C0C1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		134C6F502BFBFA12008C0C1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		134C6F522BFBFA12008C0C1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		134C6F572BFBFA17008C0C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		134C6F5C2BFBFA17008C0C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		134C6F622BFC063C008C0C1E /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		134C6F6F2C01FC37008C0C1E /* withOutStoryboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = withOutStoryboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		134C6F722C01FC37008C0C1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		134C6F742C01FC37008C0C1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		134C6F762C01FC37008C0C1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		134C6F7B2C01FC39008C0C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		134C6F802C01FC39008C0C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		134C6FA62C020259008C0C1E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		134C6F482BFBFA12008C0C1E /* Frameworks */ = {
+		134C6F6C2C01FC37008C0C1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,71 +35,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		134C6F422BFBFA12008C0C1E = {
+		134C6F662C01FC37008C0C1E = {
 			isa = PBXGroup;
 			children = (
-				134C6F4D2BFBFA12008C0C1E /* valiaApp */,
-				134C6F4C2BFBFA12008C0C1E /* Products */,
+				134C6F712C01FC37008C0C1E /* withOutStoryboard */,
+				134C6F702C01FC37008C0C1E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		134C6F4C2BFBFA12008C0C1E /* Products */ = {
+		134C6F702C01FC37008C0C1E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134C6F4B2BFBFA12008C0C1E /* valiaApp.app */,
+				134C6F6F2C01FC37008C0C1E /* withOutStoryboard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		134C6F4D2BFBFA12008C0C1E /* valiaApp */ = {
+		134C6F712C01FC37008C0C1E /* withOutStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				134C6F4E2BFBFA12008C0C1E /* AppDelegate.swift */,
-				134C6F502BFBFA12008C0C1E /* SceneDelegate.swift */,
-				134C6F522BFBFA12008C0C1E /* ViewController.swift */,
-				134C6F622BFC063C008C0C1E /* NewViewController.swift */,
-				134C6F572BFBFA17008C0C1E /* Assets.xcassets */,
-				134C6F5C2BFBFA17008C0C1E /* Info.plist */,
+				134C6F722C01FC37008C0C1E /* AppDelegate.swift */,
+				134C6F742C01FC37008C0C1E /* SceneDelegate.swift */,
+				134C6F762C01FC37008C0C1E /* ViewController.swift */,
+				134C6F7B2C01FC39008C0C1E /* Assets.xcassets */,
+				134C6F802C01FC39008C0C1E /* Info.plist */,
+				134C6FA62C020259008C0C1E /* main.swift */,
 			);
-			path = valiaApp;
+			path = withOutStoryboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		134C6F4A2BFBFA12008C0C1E /* valiaApp */ = {
+		134C6F6E2C01FC37008C0C1E /* withOutStoryboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 134C6F5F2BFBFA17008C0C1E /* Build configuration list for PBXNativeTarget "valiaApp" */;
+			buildConfigurationList = 134C6F832C01FC39008C0C1E /* Build configuration list for PBXNativeTarget "withOutStoryboard" */;
 			buildPhases = (
-				134C6F472BFBFA12008C0C1E /* Sources */,
-				134C6F482BFBFA12008C0C1E /* Frameworks */,
-				134C6F492BFBFA12008C0C1E /* Resources */,
+				134C6F6B2C01FC37008C0C1E /* Sources */,
+				134C6F6C2C01FC37008C0C1E /* Frameworks */,
+				134C6F6D2C01FC37008C0C1E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = valiaApp;
-			productName = valiaApp;
-			productReference = 134C6F4B2BFBFA12008C0C1E /* valiaApp.app */;
+			name = withOutStoryboard;
+			productName = withOutStoryboard;
+			productReference = 134C6F6F2C01FC37008C0C1E /* withOutStoryboard.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		134C6F432BFBFA12008C0C1E /* Project object */ = {
+		134C6F672C01FC37008C0C1E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
-					134C6F4A2BFBFA12008C0C1E = {
+					134C6F6E2C01FC37008C0C1E = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
 			};
-			buildConfigurationList = 134C6F462BFBFA12008C0C1E /* Build configuration list for PBXProject "valiaApp" */;
+			buildConfigurationList = 134C6F6A2C01FC37008C0C1E /* Build configuration list for PBXProject "withOutStoryboard" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -107,43 +107,43 @@
 				en,
 				Base,
 			);
-			mainGroup = 134C6F422BFBFA12008C0C1E;
-			productRefGroup = 134C6F4C2BFBFA12008C0C1E /* Products */;
+			mainGroup = 134C6F662C01FC37008C0C1E;
+			productRefGroup = 134C6F702C01FC37008C0C1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				134C6F4A2BFBFA12008C0C1E /* valiaApp */,
+				134C6F6E2C01FC37008C0C1E /* withOutStoryboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		134C6F492BFBFA12008C0C1E /* Resources */ = {
+		134C6F6D2C01FC37008C0C1E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				134C6F582BFBFA17008C0C1E /* Assets.xcassets in Resources */,
+				134C6F7C2C01FC39008C0C1E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		134C6F472BFBFA12008C0C1E /* Sources */ = {
+		134C6F6B2C01FC37008C0C1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				134C6F532BFBFA12008C0C1E /* ViewController.swift in Sources */,
-				134C6F4F2BFBFA12008C0C1E /* AppDelegate.swift in Sources */,
-				134C6F512BFBFA12008C0C1E /* SceneDelegate.swift in Sources */,
-				134C6F632BFC063C008C0C1E /* NewViewController.swift in Sources */,
+				134C6F772C01FC37008C0C1E /* ViewController.swift in Sources */,
+				134C6F732C01FC37008C0C1E /* AppDelegate.swift in Sources */,
+				134C6FA72C020259008C0C1E /* main.swift in Sources */,
+				134C6F752C01FC37008C0C1E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		134C6F5D2BFBFA17008C0C1E /* Debug */ = {
+		134C6F812C01FC39008C0C1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -206,7 +206,7 @@
 			};
 			name = Debug;
 		};
-		134C6F5E2BFBFA17008C0C1E /* Release */ = {
+		134C6F822C01FC39008C0C1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -262,7 +262,7 @@
 			};
 			name = Release;
 		};
-		134C6F602BFBFA17008C0C1E /* Debug */ = {
+		134C6F842C01FC39008C0C1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -270,7 +270,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = valiaApp/Info.plist;
+				INFOPLIST_FILE = withOutStoryboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -280,7 +280,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = valias.valiaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = valias.withOutStoryboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -288,7 +288,7 @@
 			};
 			name = Debug;
 		};
-		134C6F612BFBFA17008C0C1E /* Release */ = {
+		134C6F852C01FC39008C0C1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -296,7 +296,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = valiaApp/Info.plist;
+				INFOPLIST_FILE = withOutStoryboard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -306,7 +306,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = valias.valiaApp;
+				PRODUCT_BUNDLE_IDENTIFIER = valias.withOutStoryboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -317,25 +317,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		134C6F462BFBFA12008C0C1E /* Build configuration list for PBXProject "valiaApp" */ = {
+		134C6F6A2C01FC37008C0C1E /* Build configuration list for PBXProject "withOutStoryboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				134C6F5D2BFBFA17008C0C1E /* Debug */,
-				134C6F5E2BFBFA17008C0C1E /* Release */,
+				134C6F812C01FC39008C0C1E /* Debug */,
+				134C6F822C01FC39008C0C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		134C6F5F2BFBFA17008C0C1E /* Build configuration list for PBXNativeTarget "valiaApp" */ = {
+		134C6F832C01FC39008C0C1E /* Build configuration list for PBXNativeTarget "withOutStoryboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				134C6F602BFBFA17008C0C1E /* Debug */,
-				134C6F612BFBFA17008C0C1E /* Release */,
+				134C6F842C01FC39008C0C1E /* Debug */,
+				134C6F852C01FC39008C0C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 134C6F432BFBFA12008C0C1E /* Project object */;
+	rootObject = 134C6F672C01FC37008C0C1E /* Project object */;
 }

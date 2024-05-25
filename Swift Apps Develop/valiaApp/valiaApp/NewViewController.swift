@@ -11,6 +11,14 @@ import UIKit
 class NewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
+            
+        
+        self.navigationItem.title = "Profile"
+        
+    }
+    
+    @objc func goToProfile() {
+        tabBarController?.selectedIndex = 1
     }
 }
