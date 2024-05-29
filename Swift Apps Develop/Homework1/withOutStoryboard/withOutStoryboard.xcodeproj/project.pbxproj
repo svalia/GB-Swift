@@ -19,6 +19,7 @@
 		134C702B2C03970C008C0C1E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C702A2C03970C008C0C1E /* PhotosViewController.swift */; };
 		134C702D2C039922008C0C1E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C702C2C039922008C0C1E /* PhotoCell.swift */; };
 		134C702F2C039FD4008C0C1E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C702E2C039FD4008C0C1E /* Constants.swift */; };
+		134C70312C03AAD8008C0C1E /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134C70302C03AAD8008C0C1E /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		134C702A2C03970C008C0C1E /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		134C702C2C039922008C0C1E /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		134C702E2C039FD4008C0C1E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		134C70302C03AAD8008C0C1E /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		134C6F712C01FC37008C0C1E /* withOutStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				134C70302C03AAD8008C0C1E /* WebViewController.swift */,
 				134C6F722C01FC37008C0C1E /* AppDelegate.swift */,
 				134C6F742C01FC37008C0C1E /* SceneDelegate.swift */,
 				134C6F762C01FC37008C0C1E /* ViewController.swift */,
@@ -161,6 +164,7 @@
 				134C70232C032203008C0C1E /* FriendsViewController.swift in Sources */,
 				134C6F732C01FC37008C0C1E /* AppDelegate.swift in Sources */,
 				134C6FA72C020259008C0C1E /* main.swift in Sources */,
+				134C70312C03AAD8008C0C1E /* WebViewController.swift in Sources */,
 				134C702D2C039922008C0C1E /* PhotoCell.swift in Sources */,
 				134C6F752C01FC37008C0C1E /* SceneDelegate.swift in Sources */,
 				134C70292C032F04008C0C1E /* GroupViewCell.swift in Sources */,

@@ -15,6 +15,7 @@ final class FriendViewCell: UITableViewCell {
         name.textColor = .black
         return name
     } ()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -24,6 +25,7 @@ final class FriendViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private func setupUI() {
         contentView.addSubview(avatar)
         contentView.addSubview(name)
