@@ -170,3 +170,134 @@ func five (a:inout [Int], b:[Int]) -> [Int] {
     return c
 }
 
+//Написать функцию, которая на вход получает целое число и массив целых чисел. Если число есть в массиве, то возвращает этот массив, а если нет - nil
+
+
+func myFunc (number: Int, array: [Int]) -> [Int]? {
+    array.contains(number) ? array : nil
+}
+
+func one (number: Int, array: [Int]) -> [Int]? {
+    if array.contains(number) {
+        return array
+    }
+    else {
+        return nil
+    }
+}
+
+func two (number: Int, array: [Int]) -> [Int]? {
+    guard array.contains(number) else {
+        return nil
+    }
+    return array
+}
+
+//Напишите 2 функции, обе на вход принимают строку, которая является опционалом. Задача у функций одна: если в строке больше 5 символов или есть “h”, то выведите строку в консоль. Во всех остальных случая ничего не делайте. Первая функция должна распаковывать опционал при помощи if ler, а вторая при помощи guard let.
+
+func three (a: String?) {
+    if let a {
+        if a.count > 5 || a.contains("h") {
+            print(a)
+        }
+    }
+}
+
+func four (a: String?) {
+    guard let a else {
+        return
+    }
+    if a.count > 5 || a.contains("h") {
+        print(a)
+    }
+}
+
+//Напишите функцию, которая на вход принимает два целых числа и оба являются опционалами. Если числа существуют - выведите в консоль результат их сложения, во всех остальных случаях ничего не делайте.
+
+func five (a: Int?, b: Int?) {
+    if let a, let b, b > 5 {
+        print(a+b)
+    }
+}
+func six (a: Int?, b: Int?) {
+    guard let a, let b, b > 5 else {
+       return
+    }
+    print(a+b)
+}
+
+func seven (a: [Int]?) -> [Int] {
+    if let a {
+        return a
+    }
+    else {
+        return [1, 2, 3]
+    }
+}
+
+func eleven (a: [Int]?) -> [Int] {
+    guard let a else {
+        return [1, 2, 3]
+    }
+        return a
+}
+
+func twelve (a: [Int]?) -> [Int] {
+    a ?? [1, 2, 3]
+}
+
+//Написать функцию, которая на вход принимает кортеж из трех строк. Функция должна возвращать кортеж из первой и последней строки.
+
+func cort (a: (String, String, String)) -> (String, String) {
+    (a.0, a.2)
+}
+
+
+//Напишем функцию, которая на вход принимает два целых числа, а возвращает эти же два числа, но каждое увеличено в два раза.
+
+func cort2 (a: (Int, Int)) -> (Int, Int) {
+    (a.0 * 2, a.1 * 2)
+}
+
+func cort3 (a: (Int?, Int?)) -> (Int, Int) {
+    if let b1 = a.0, let b2 = a.1 {
+      return (b1 * 2, b2 * 2)
+    }
+    return (0, 0)
+}
+
+func cort4 (a: (Int?, Int?)) -> (Int, Int) {
+    guard let b1 = a.0, let b2 = a.1 else {
+        return (0, 0)
+    }
+    return (b1 * 2, b2 * 2)
+    
+}
+
+func cort5 (a: (Int?, Int?)) -> (Int, Int) {
+    ((a.0 ?? 0) * 2, (a.1 ?? 0) * 2)
+}
+
+func cort6 (a: (String?, String?, String?)?) -> String {
+    if let a, let b = a.0, let b1 = a.1, let b2 = a.2 {
+        return b + b1 + b2
+    }
+    else {
+        return ""
+    }
+}
+
+func cort7 (a: (String?, String?, String?)?) -> String {
+    guard let a, let b = a.0, let b1 = a.1, let b2 = a.2 else {
+        return ""
+    }
+    return b + b1 + b2
+}
+
+func cort8 (a: (String?, String?, String?)?) -> String {
+    guard let a else {
+        return ""
+    }
+    return (a.0 ?? "") +  (a.1 ?? "") + (a.2 ?? "")
+    
+}
