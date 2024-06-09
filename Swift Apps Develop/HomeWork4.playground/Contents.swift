@@ -19,13 +19,15 @@ func hasCommonElementsAtSameIndices (arr1: [Int], arr2: [Int]) -> Bool? {
     guard !arr1.isEmpty, !arr2.isEmpty, arr1.count == arr2.count else {
         return nil
     }
-    for i in arr1 {
+    for i in 0..<arr1.count {
         if arr1[i] == arr2[i] {
             return true
         }
     }
     return false
 }
+hasCommonElementsAtSameIndices(arr1: [1, 5, 7, 8, 9], arr2: [9, 7, 5, 1, 9])
+
 //4. Написать функцию, которая на вход принимает строку и возвращает новую строку. Если строка, полученная на вход пуста - вернуть nil. Функция должна вернуть новую строку, состоящую из элементов входное строки, но не должно быть a, h, k.
 func isAHK (a: String) -> String? {
     guard !a.isEmpty else {
@@ -80,3 +82,6 @@ func twoArrs (arr1: [String], arr2: [String]) -> Bool? {
 
 
 twoArrs(arr1: ["234asd", "234asd"], arr2: ["234asd", "234asd"])
+
+var a = [1, 2, 3]
+print(a[1])
