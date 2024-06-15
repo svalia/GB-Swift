@@ -70,18 +70,23 @@ struct Cake {
     }
 }
 
-class Box { // класс коробки с приватной переменной, хранящей массив пироженных
-    private var setCakes: [Cake]
-    init(setCakes: [Cake]) {
-        self.setCakes = setCakes
+class Box<T> {
+    private var things: [T?]
+    init(things: [T?]) {
+        things ?? nil
+        self.things = things
     }
-    func addNewCake(newCake: Cake) { // функция добавления нового пироженного
-        setCakes.append(newCake)
+    func addNewThing(newThing: T?) { // функция добавления новой вещи в корзину
+        if let newThing {
+            things.append(newThing)
+        }
     }
-    func getAllCakeInBox() { // функция получения всех пироженных
-        setCakes
+    func getAllThingsInBox() { // функция получения всех вещей в корзине
+        things
     }
 }
+
+
 
 enum AdBanner { // рекламный баннер с перечислением
     case text(String)
@@ -101,25 +106,46 @@ var lemonCake = Cake(cost: 10.5, taste: .chokolate, decoration: [.cream, .nuts])
 print(lemonCake?.name)// после добавления опционалного инициализатора, xcode попросил тут добавить ? - примерно понял почему, но хочу чтобы понять наверняка
 lemonCake?.getCost() //тут тоже самое
 
-class StandartBox: Box {
-//    private(set) var name: String = "стандартная коробка"
-    override func addNewCake(newCake: Cake) {
-        super.addNewCake(newCake: newCake)
-        print(newCake)
-    }
-}
-class Basket: Box {
-//    private(set) var name: String = "корзинка"
-}
-var box1: Box
-var cake1 = Cake(cost: 10, taste: .chokolate, decoration: [.cream, .nuts])
-box1.addNewCake(newCake: cake1 ?? nil) //- тут не понял как распаковать опционал, понял что это как-то связанно с тем что у Cake опциональный инициатор
+class StandartBox: Box<Cake> {
 
-//Вопрос для занятия
-//class Automate : VendingAutomate {
-//    private(set) var name: String = "number_one" - что тут означает set
-//    private var lemonades: [Lemonade] = []
-//    init(lemonades: [Lemonade]) {
-//        self.lemonades = lemonades
-//    }
-//}
+}
+
+class Basket: Box<Flower> {
+//    var bouquetOfFlowers: [Flower] = []
+}
+var box1 = Box<Cake>(things: [])
+var cake1 = Cake(cost: 10, taste: .chokolate, decoration: [.cream, .nuts])
+if let cake1 {
+    box1.addNewThing(newThing: cake1)
+}
+
+box1.addNewThing(newThing: cake1!)
+
+func optionalString(a:String?) -> String {
+    a ?? "" // если а строка - вернется строка, а если а это nil врентся "" (пустая строка)
+}
+
+struct Flower {
+    var name: NameFlower
+    var costOfFlower: Double
+    enum NameFlower: String {
+        case rose
+        case lily
+        case daisy
+    }
+    
+}
+var threeFlowers = [Flower(name: .daisy, costOfFlower: 5), Flower(name: .rose, costOfFlower: 10), Flower(name: .lily, costOfFlower: 15)]
+var flowersBasket = Basket(things: threeFlowers)
+print(flowersBasket.getAllThingsInBox())
+
+var anyCakes = [Cake(cost: 10, taste: .chokolate, decoration: [.nuts])]
+
+print(type(of: anyCakes))
+var simpleBox = StandartBox(things: anyCakes)
+                                                                          
+
+
+
+
+

@@ -126,7 +126,18 @@ lemonad.setPromoCost(promoCode: .newSize(10, .l))
 lemonad.setPromoCost(promoCode: .new(20.0))
 lemonad.setPromoCost(promoCode: .year(30.0))
 
-class VendingAutomate {
+class VendingAutomate<T> {
+    private var products: [T]
+    init(products: [T]) {
+        self.products = products
+    }
+    func addNewProduct(newProduct: T) {
+        products.append(newProduct)
+    }
+    func getAllProducts() -> [T] {
+        products
+    }
+    
     func start() {
         print("start start start")
     }
@@ -135,30 +146,25 @@ class VendingAutomate {
     }
 }
 
-class Automate : VendingAutomate {
-    private(set) var name: String = "number_one"
-    private var lemonades: [Lemonade] = []
-    init(lemonades: [Lemonade]) {
-        self.lemonades = lemonades
-    }
-    func getAllLemonades () -> [Lemonade] {
-        lemonades
-    }
-    func addNewLemonade (newLemonade: Lemonade) {
-        lemonades.append(newLemonade)
-    }
+class Automate: VendingAutomate<Lemonade> {
+    private(set) var name: String = "number_one" //private(set) - позволяет получить вне класса, менять можно только внутри
+    lazy var countDrinks: Int = {
+        getAllProducts().count
+    }()
+    
     func setNewName(_ newName: String) {
         name = newName
     }
     override func start() {
         super.start()
-        print(lemonades.count)
+        print(countDrinks)
     }
-    convenience override init() {
+    convenience init() {
         let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
         let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
-        self.init(lemonades: [cola, fanta])
+        self.init(products: [cola, fanta])
     }
+
 }
 
 enum Scan {
@@ -177,18 +183,7 @@ func qrOrBarCode (code: Scan) -> (String?, Int?) {
 
 }
 
-final class FoodAutomate: VendingAutomate {
-    private var chocoSet: [Chokolate]
-    
-    init(chocoSet: [Chokolate]) {
-        self.chocoSet = chocoSet
-    }
-    func getChocos () -> [Chokolate] {
-        chocoSet
-    }
-    func addNewChoco (newChoco: Chokolate) {
-        chocoSet.append(newChoco)
-    }
+final class FoodAutomate: VendingAutomate<Chokolate> {
     
 }
 
@@ -206,22 +201,39 @@ struct Chokolate {
     }
 }
 
-var drinksAutomate = Automate(lemonades: [])
+var drinksAutomate = Automate(products: [])
 drinksAutomate.start()
-var foodAutomate = FoodAutomate(chocoSet: [])
+drinksAutomate.addNewProduct(newProduct: Lemonade(cost: 10, size: .l, promoCode: .happy(10)))
+drinksAutomate.countDrinks
+var foodAutomate = FoodAutomate(products: [])
 foodAutomate.start()
 
-var vending1: VendingAutomate = VendingAutomate()
-var vending2: VendingAutomate = Automate(lemonades: [])
-var vending3: VendingAutomate = FoodAutomate(chocoSet: [])
-print(type(of: vending1))
-print(type(of: vending2))
-print(type(of: vending3))
+//var vending1: VendingAutomate = VendingAutomate()
+//var vending2: VendingAutomate = Automate(lemonades: [])
+//var vending3: VendingAutomate = FoodAutomate(chocoSet: [])
+//print(type(of: vending1))
+//print(type(of: vending2))
+//print(type(of: vending3))
 
-print(vending2 is VendingAutomate)
-print(vending2 is Automate)
-print(vending2 is FoodAutomate)
+//print(vending2 is VendingAutomate)
+//print(vending2 is Automate)
+//print(vending2 is FoodAutomate)
 
-var vending4 = vending2 as? FoodAutomate
+//var vending4 = vending2 as? FoodAutomate
 //vending4?.getAllLemonades()
-vending4?.getChocos()
+//vending4?.getChocos()
+
+func printFunc<T>(_ a:T) {
+    print(a)
+}
+printFunc("sdf")
+printFunc(5)
+printFunc(5.0)
+
+func multiplayThreeInt<T: Numeric> (_ a: T, _ b: T, _ c: T) -> T {
+    a * b * c
+}
+var multi1 = multiplayThreeInt(5, 3, 3)
+var multi2 = multiplayThreeInt(3.5, 2.4, 4.5)
+
+
