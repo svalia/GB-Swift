@@ -9,6 +9,15 @@ import UIKit
 //2. Добавить возможность украсить пирожное. Для этого нужно создать перечисление с возможными видами украшения. Добавить в пирожное свойство, в котором будет хранится вариант украшения. Не забыть проинициализировать его.
 //3. Сделать так, чтобы можно было использовать сразу несколько украшений.
 
+//--------------Задание 3-----------
+//70 строка - Создать класс коробки для пирожных, назовем просто Box. В нем должно быть свойство с массивом пирожных и это свойство должно быть приватным. Задать массив пирожных в инициализаторе.
+//75 строка - Добавить в класс функцию по добавлению нового пирожного в массив
+//78 строка - Добавить функцию по получению всех пирожных в коробке
+//83 строка - Создать перечисление для баннера рекламы. На баннере можно будет показывать или целое, или строку или дробное число. Для каждого кейса должно быть ассоциативное значение, соответствующее тому, что может отобразить баннер. Написать функцию, которая на вход принимает баннер рекламы (перечисление), а возвращает то, что на баннере написано (то есть ассоциативное значение для кейса)
+//--------------Задание 4-----------
+//104 и 107 строка - Создать два класса наследника для коробки с пирожными. Стандартная коробка и корзинка.
+//105 строка - Сделать так, чтобы в классе стандартной коробки в функции добавления пирожного не только добавлялось пирожное. но и выводилось в консоль само пирожное.
+
 enum Taste: String {
     case lemon
     case strawberry
@@ -16,7 +25,7 @@ enum Taste: String {
 }
 
 enum CakeDecoration {
-    case Cream
+    case cream
     case fruitSlices
     case icing
     case nuts
@@ -61,7 +70,56 @@ struct Cake {
     }
 }
 
-var lemonCake = Cake(cost: 10.5, taste: .chokolate, decoration: [.Cream, .nuts])
+class Box { // класс коробки с приватной переменной, хранящей массив пироженных
+    private var setCakes: [Cake]
+    init(setCakes: [Cake]) {
+        self.setCakes = setCakes
+    }
+    func addNewCake(newCake: Cake) { // функция добавления нового пироженного
+        setCakes.append(newCake)
+    }
+    func getAllCakeInBox() { // функция получения всех пироженных
+        setCakes
+    }
+}
+
+enum AdBanner { // рекламный баннер с перечислением
+    case text(String)
+    case int(Int)
+    case double(Double)
+}
+func getAdBanner(ad: AdBanner) -> (String?, Int?, Double?) { //цункция возврата значения рекламного баннера
+    switch ad {
+    case .text(let text) : return (text, nil, nil)
+    case .int(let int) : return (nil, int, nil)
+    case .double(let double) : return (nil, nil, double)
+    }
+}
+
+
+var lemonCake = Cake(cost: 10.5, taste: .chokolate, decoration: [.cream, .nuts])
 print(lemonCake?.name)// после добавления опционалного инициализатора, xcode попросил тут добавить ? - примерно понял почему, но хочу чтобы понять наверняка
 lemonCake?.getCost() //тут тоже самое
 
+class StandartBox: Box {
+//    private(set) var name: String = "стандартная коробка"
+    override func addNewCake(newCake: Cake) {
+        super.addNewCake(newCake: newCake)
+        print(newCake)
+    }
+}
+class Basket: Box {
+//    private(set) var name: String = "корзинка"
+}
+var box1: Box
+var cake1 = Cake(cost: 10, taste: .chokolate, decoration: [.cream, .nuts])
+box1.addNewCake(newCake: cake1 ?? nil) //- тут не понял как распаковать опционал, понял что это как-то связанно с тем что у Cake опциональный инициатор
+
+//Вопрос для занятия
+//class Automate : VendingAutomate {
+//    private(set) var name: String = "number_one" - что тут означает set
+//    private var lemonades: [Lemonade] = []
+//    init(lemonades: [Lemonade]) {
+//        self.lemonades = lemonades
+//    }
+//}

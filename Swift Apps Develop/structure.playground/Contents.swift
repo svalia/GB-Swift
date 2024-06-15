@@ -125,3 +125,103 @@ lemonad.setPromoCost(promoCode: .happy(10.0))
 lemonad.setPromoCost(promoCode: .newSize(10, .l))
 lemonad.setPromoCost(promoCode: .new(20.0))
 lemonad.setPromoCost(promoCode: .year(30.0))
+
+class VendingAutomate {
+    func start() {
+        print("start start start")
+    }
+    final func final() {
+        print("final")
+    }
+}
+
+class Automate : VendingAutomate {
+    private(set) var name: String = "number_one"
+    private var lemonades: [Lemonade] = []
+    init(lemonades: [Lemonade]) {
+        self.lemonades = lemonades
+    }
+    func getAllLemonades () -> [Lemonade] {
+        lemonades
+    }
+    func addNewLemonade (newLemonade: Lemonade) {
+        lemonades.append(newLemonade)
+    }
+    func setNewName(_ newName: String) {
+        name = newName
+    }
+    override func start() {
+        super.start()
+        print(lemonades.count)
+    }
+    convenience override init() {
+        let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
+        let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
+        self.init(lemonades: [cola, fanta])
+    }
+}
+
+enum Scan {
+    case qr (String)
+    case barCode (Int, Int, Int, Int)
+}
+var scan1 = Scan.barCode(5, 5, 5, 5)
+var scan2 = Scan.qr("qr")
+
+func qrOrBarCode (code: Scan) -> (String?, Int?) {
+    switch code {
+    case .barCode(let a, let b, let c, let d) : let f = a + b + c + d 
+        return (nil, f)
+    case .qr(let g) : return (g, nil)
+    }
+
+}
+
+final class FoodAutomate: VendingAutomate {
+    private var chocoSet: [Chokolate]
+    
+    init(chocoSet: [Chokolate]) {
+        self.chocoSet = chocoSet
+    }
+    func getChocos () -> [Chokolate] {
+        chocoSet
+    }
+    func addNewChoco (newChoco: Chokolate) {
+        chocoSet.append(newChoco)
+    }
+    
+}
+
+struct Chokolate {
+    var name: String
+    var cost: Double
+    enum TypeOfChoco: String {
+        case dark
+        case milk
+        case white
+    }
+    init(name: TypeOfChoco, cost: Double) {
+        self.name = name.rawValue
+        self.cost = cost
+    }
+}
+
+var drinksAutomate = Automate(lemonades: [])
+drinksAutomate.start()
+var foodAutomate = FoodAutomate(chocoSet: [])
+foodAutomate.start()
+
+var vending1: VendingAutomate = VendingAutomate()
+var vending2: VendingAutomate = Automate(lemonades: [])
+var vending3: VendingAutomate = FoodAutomate(chocoSet: [])
+print(type(of: vending1))
+print(type(of: vending2))
+print(type(of: vending3))
+
+print(vending2 is VendingAutomate)
+print(vending2 is Automate)
+print(vending2 is FoodAutomate)
+
+var vending4 = vending2 as? FoodAutomate
+//vending4?.getAllLemonades()
+vending4?.getChocos()
