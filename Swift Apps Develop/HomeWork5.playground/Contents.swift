@@ -1,22 +1,4 @@
 import UIKit
-//--------------Задание 1-----------
-//1. Создать структуру пирожного. У пирожного должно быть название, стоимость и вкус (например, клубничное, малиновое, черничное). Название должно быть вычисляемым свойством и возвращать вкус + “cake”, например, “strawberry cake”. Вкус должен быть уровня internal, а стоимость private. Написать инициализатор, в котором будет устанавливаться вкус и стоимость.
-//2. Написать в структуре пирожного функцию, которая позволяет получить стоимость.
-//3& Написать в структуре пирожного функцию, которая позволяет изменить стоимость, исходя из полученной скидки. Если полученная скидка меньше или равна 30%, то установить новую стоимость за вычетом скидки, в противном случае не изменять стоимость и вывести сообщение, что скидка должна быть меньше или равна 30%.
-
-//--------------Задание 2-----------
-//1. Сделать вкус в структуре пирожного перечислением.
-//2. Добавить возможность украсить пирожное. Для этого нужно создать перечисление с возможными видами украшения. Добавить в пирожное свойство, в котором будет хранится вариант украшения. Не забыть проинициализировать его.
-//3. Сделать так, чтобы можно было использовать сразу несколько украшений.
-
-//--------------Задание 3-----------
-//70 строка - Создать класс коробки для пирожных, назовем просто Box. В нем должно быть свойство с массивом пирожных и это свойство должно быть приватным. Задать массив пирожных в инициализаторе.
-//75 строка - Добавить в класс функцию по добавлению нового пирожного в массив
-//78 строка - Добавить функцию по получению всех пирожных в коробке
-//83 строка - Создать перечисление для баннера рекламы. На баннере можно будет показывать или целое, или строку или дробное число. Для каждого кейса должно быть ассоциативное значение, соответствующее тому, что может отобразить баннер. Написать функцию, которая на вход принимает баннер рекламы (перечисление), а возвращает то, что на баннере написано (то есть ассоциативное значение для кейса)
-//--------------Задание 4-----------
-//104 и 107 строка - Создать два класса наследника для коробки с пирожными. Стандартная коробка и корзинка.
-//105 строка - Сделать так, чтобы в классе стандартной коробки в функции добавления пирожного не только добавлялось пирожное. но и выводилось в консоль само пирожное.
 
 enum Taste: String {
     case lemon
@@ -33,8 +15,8 @@ enum CakeDecoration {
     
 }
 
-struct Cake {
-    private var cost: Double
+struct Cake: Products {
+    var cost: Double
     var taste: Taste
     var decoration: [CakeDecoration]
     var name: String {
@@ -68,14 +50,22 @@ struct Cake {
         cost = Double(newCost)
         return cost
     }
+    func isPacket() -> Bool {
+        cost > 100
+    }
 }
-
+protocol ProtBox {
+    associatedtype Goods
+    func addNewGood(newGood: Goods)
+    func getGood() -> [Goods]
+}
 class Box<T> {
-    private var things: [T?]
-    init(things: [T?]) {
-        things ?? nil
+    typealias Goods = T
+    private var things: [T]
+    init(things: [T]) {
         self.things = things
     }
+    
     func addNewThing(newThing: T?) { // функция добавления новой вещи в корзину
         if let newThing {
             things.append(newThing)
@@ -85,8 +75,14 @@ class Box<T> {
         things
     }
 }
-
-
+extension Box: ProtBox {
+    func addNewGood(newGood: T) {
+        things.append(newGood)
+    }
+    func getGood() -> [T] {
+        things
+    }
+}
 
 enum AdBanner { // рекламный баннер с перечислением
     case text(String)
@@ -110,9 +106,29 @@ class StandartBox: Box<Cake> {
 
 }
 
-class Basket: Box<Flower> {
-//    var bouquetOfFlowers: [Flower] = []
+class Basket: Box<Products> {
+
 }
+
+struct Book: Products {
+    var cost: Double
+}
+struct Flower: Products {
+    
+    var name: NameFlower
+    var cost: Double
+    enum NameFlower: String {
+        case rose
+        case lily
+        case daisy
+    }
+    
+}
+
+var products: [Products] = [Cake(cost: 10, taste: .chokolate, decoration: [.cream, .cream])!, Flower(name: .rose, cost: 130), Book(cost: 100), Book(cost: 150)]
+var bask = Basket(things: products)
+
+
 var box1 = Box<Cake>(things: [])
 var cake1 = Cake(cost: 10, taste: .chokolate, decoration: [.cream, .nuts])
 if let cake1 {
@@ -125,27 +141,111 @@ func optionalString(a:String?) -> String {
     a ?? "" // если а строка - вернется строка, а если а это nil врентся "" (пустая строка)
 }
 
-struct Flower {
-    var name: NameFlower
-    var costOfFlower: Double
-    enum NameFlower: String {
-        case rose
-        case lily
-        case daisy
-    }
-    
-}
-var threeFlowers = [Flower(name: .daisy, costOfFlower: 5), Flower(name: .rose, costOfFlower: 10), Flower(name: .lily, costOfFlower: 15)]
+
+var threeFlowers = [Flower(name: .daisy, cost: 5), Flower(name: .rose, cost: 10), Flower(name: .lily, cost: 15)]
 var flowersBasket = Basket(things: threeFlowers)
 print(flowersBasket.getAllThingsInBox())
 
 var anyCakes = [Cake(cost: 10, taste: .chokolate, decoration: [.nuts])]
-
+var someCake: [Cake] = []
+for element in anyCakes {
+    if let element {
+        someCake.append(element)
+    }
+}
 print(type(of: anyCakes))
-var simpleBox = StandartBox(things: anyCakes)
+var simpleBox = StandartBox(things: someCake)
                                                                           
+protocol Products {
+    var cost: Double {get}
+    func isPacket() -> Bool
+}
+extension Products {
+    func isPacket() -> Bool {
+        false
+    }
+}
+
+func fiveNum<T: Numeric>(a: [T]) -> T {
+    var sum: T = 0
+    for element in a {
+        sum += element
+    }
+    return sum
+}
 
 
+extension String {
+    var word: String {
+        "value"
+    }
+    func printSting() {
+        print("\(self) \(word)")
+    }
+}
+var str = "hello world"
+str.printSting()
+str.word
 
 
+let a = {(a: Int, b: Int) -> String in
+    let c = a + b
+    return "Sum: \(c)"
+}
 
+a(4, 5)
+
+let b = {(a: Int, b: Int) in
+    "raznica: \(a - b)"
+}
+
+func twoNum(a: Int, b: Int, closure: (Int, Int) -> String) {
+    closure(a, b)
+}
+twoNum(a: 5, b: 5) { c, d in
+    String(c - d)
+}
+ twoNum(a: 3, b: 2, closure: b)
+
+let d = {
+    print("hello")
+}
+d()
+func clos(closure: () -> Void) {
+    closure()
+}
+
+clos {
+    print("hello")
+}
+clos(closure: d)
+twoNum(a: 7, b: 8) { _, d in
+    String(d)
+}
+
+func twoNumeber(a: Int, b: Int, closure: @escaping (Int, Int) -> String) {
+    a + b
+    closure(a, b)
+}
+
+//1. Создать константу, в которой лежит замыкание, которое на вход принимает строку, а возвращает число из строки, если это число и nil, если не число
+
+let n = {(a: String) -> Int? in
+//    type(of: Int(a)) is Int ? Int(a) : nil
+    let c = Int(a)
+    guard let c else {
+        return nil
+    }
+    return c
+}
+//2. Написать функцию, которая на вход принимает строку и замыкание того же типа, как в пункте 1. Внутри функции вызывается замыкание
+func stringToInt(a: String, closure:(String) -> Int?) {
+    closure(a)
+}
+
+//3. Вызвать функцию 2 способами. В первом передать заранее подготовленное замыкание, а во втором - написать замыкание при вызове функции
+
+stringToInt(a: "56", closure: n)
+stringToInt(a: "78") { b in
+    Int(b)
+}
