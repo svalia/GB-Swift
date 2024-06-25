@@ -1,11 +1,12 @@
 import UIKit
 
+//Вкусы
 enum Taste: String {
     case lemon
     case strawberry
     case chokolate
 }
-
+//Украшения
 enum CakeDecoration {
     case cream
     case fruitSlices
@@ -14,12 +15,12 @@ enum CakeDecoration {
     case powderedSugar
     
 }
-
+//Структура продукта подписанная на протокол Products
 struct Cake: Products {
     var cost: Double
     var taste: Taste
     var decoration: [CakeDecoration]
-    var name: String {
+    var name: String { //Вычисляемое свойство name
         get {
             taste.rawValue + " Cake"
         }
@@ -28,7 +29,7 @@ struct Cake: Products {
         }
     }
     
-    init?(cost: Double, taste: Taste, decoration: [CakeDecoration]?) {
+    init?(cost: Double, taste: Taste, decoration: [CakeDecoration]?) {//опциональный инициализатор
         self.cost = cost
         self.taste = taste
         guard let decoration else {
@@ -39,9 +40,7 @@ struct Cake: Products {
     func getCost () -> Double {
         return cost
     }
-    mutating func setCost (discount:Int) -> Double {
-        //    <= 30 cost - discount
-        //    else == discount && "Скидка должна быть не более 30%"
+    mutating func setCost (discount:Int) -> Double { //функция меняющее свойство структуры в которой она находится
         guard discount <= 30 else {
             print("Скидка не может быть больше 30%")
             return cost
@@ -54,11 +53,14 @@ struct Cake: Products {
         cost > 100
     }
 }
+
+//Протокол коробки для продуктов
 protocol ProtBox {
     associatedtype Goods
     func addNewGood(newGood: Goods)
     func getGood() -> [Goods]
 }
+//Класс коробки с дженериком и ассоциированным типом Goods
 class Box<T> {
     typealias Goods = T
     private var things: [T]
@@ -75,6 +77,7 @@ class Box<T> {
         things
     }
 }
+//Расширение для коробки
 extension Box: ProtBox {
     func addNewGood(newGood: T) {
         things.append(newGood)
@@ -107,7 +110,18 @@ class StandartBox: Box<Cake> {
 }
 
 class Basket: Box<Products> {
-
+    //1. Написать в классе корзинки функцию, которая будет возвращать из массива товара только пирожные.
+    //2. Написать в классе корзинки функцию, которая будет возвращать товары из корзинки, отсортированные по убыванию стоимости.
+    //3. Написать функцию в классе корзинки, которая будет возвращать стоимость всех товаров, лежащих в корзинке.
+    func getOnlyCakes () -> Products {
+        getGood().filter {$0 is Cake} as! Products//as! Products - это предложил добавить xcode - понимаю что это связанно с опциональным типом Cake, но не очень понимаю суть
+    }
+    func getGoodsSortedByCost() -> Products {
+        getGood().sorted {$0.cost < $1.cost} as! Products
+    }
+    func getCostOfAllGoods() -> Products {
+        getGood().compactMap {$0.cost}.reduce(0, +) as! Products
+    }
 }
 
 struct Book: Products {
@@ -249,3 +263,7 @@ stringToInt(a: "56", closure: n)
 stringToInt(a: "78") { b in
     Int(b)
 }
+
+
+
+

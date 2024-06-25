@@ -168,6 +168,18 @@ class Automate: VendingAutomate<Drinks> {
         super.start()
         print(countDrinks)
     }
+    func minCostToMaxCost() -> [Drinks] {
+        getProducts().sorted {$0.cost < $1.cost}
+    }
+    func getOnlyWater() -> [Drinks] {
+        getProducts().filter {$0 is BootleOfWater}
+    }
+    func sumOfCostAll () -> Double {
+        getProducts().map {$0.cost}.reduce(0, +)
+    }
+    func getLemonade() -> [Lemonade] {
+        getProducts().compactMap {$0 as? Lemonade}
+    }
     convenience init() {
         let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
         let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
@@ -175,6 +187,7 @@ class Automate: VendingAutomate<Drinks> {
     }
     
 }
+
 
 enum Scan {
     case qr (String)
@@ -214,6 +227,8 @@ var drinksAutomate = Automate(products: [])
 drinksAutomate.start()
 drinksAutomate.addProduct(product: Lemonade(cost: 10, size: .l, promoCode: .happy(10)))
 drinksAutomate.countDrinks
+
+
 
 var foodAutomate = FoodAutomate(products: [])
 foodAutomate.start()
@@ -301,17 +316,19 @@ extension Drinks {
         print("get")
     }
 }
-var rosinka: Drinks = BootleOfWater(cost: 10)
+var rosinka: Drinks = BootleOfWater(cost: 15)
 
 print(rosinka.cost)
 
-drinksAutomate.addProduct(product: BootleOfWater(cost: 10))
+drinksAutomate.addProduct(product: BootleOfWater(cost: 5))
 lemonad.printGet()
 lemonad.randomCost()
 print(drinksAutomate.getProducts())
 rosinka.printGet()
 lemonad.printGet()
 
+
+print("Сортировка по цене: \(drinksAutomate.minCostToMaxCost())")
 
 protocol VendingAutomateProtocol{
     associatedtype Products
@@ -403,3 +420,43 @@ for element in cafe1.things {
     }
     print(boxNames.boxName)
 }
+let b = [3, 23, 232, 4]
+let d = b.sorted()
+print(d)
+let g = b.sorted(by: >)
+print(g)
+let v = b.sorted {first, second in
+first < second
+}
+print(v)
+let k = b.sorted {$0>$1}
+print(k)
+
+var n = [1, 2, 3, 4, 5]
+
+n.sort(by: >)
+print(n)
+
+let y = n.filter{$0 > 3}
+print(y)
+
+print(n.reduce(0, +))
+
+let j = n.map{$0 - 3}.sorted().filter{$0 < 2}
+print(j)
+
+let i = [1, nil, 2, nil, 4, 5]
+let t = i.compactMap{$0}
+print(t)
+
+let o = [b, n, y]
+let u = o.flatMap{$0}
+print(u)
+print(o)
+
+n.forEach{print($0)}
+n.forEach{element in
+    print(element)
+}
+print(n.first{$0 > 3})
+print(n.last{$0 > 2})
