@@ -1,11 +1,7 @@
 import UIKit
 
 //Вкусы
-enum Taste: String {
-    case lemon
-    case strawberry
-    case chokolate
-}
+
 //Украшения
 enum CakeDecoration {
     case cream
@@ -17,6 +13,11 @@ enum CakeDecoration {
 }
 //Структура продукта подписанная на протокол Products
 struct Cake: Products {
+    enum Taste: String {
+        case lemon
+        case strawberry
+        case chokolate
+    }
     var cost: Double
     var taste: Taste
     var decoration: [CakeDecoration]
@@ -29,12 +30,12 @@ struct Cake: Products {
         }
     }
     
-    init?(cost: Double, taste: Taste, decoration: [CakeDecoration]?) {//опциональный инициализатор
+    init(cost: Double, taste: Taste, decoration: [CakeDecoration]) {//опциональный инициализатор
         self.cost = cost
         self.taste = taste
-        guard let decoration else {
-            return nil
-        }
+//        guard let decoration else {
+//            return nil
+//        }
         self.decoration = decoration
     }
     func getCost () -> Double {
@@ -102,8 +103,8 @@ func getAdBanner(ad: AdBanner) -> (String?, Int?, Double?) { //цункция в
 
 
 var lemonCake = Cake(cost: 10.5, taste: .chokolate, decoration: [.cream, .nuts])
-print(lemonCake?.name)// после добавления опционалного инициализатора, xcode попросил тут добавить ? - примерно понял почему, но хочу чтобы понять наверняка
-lemonCake?.getCost() //тут тоже самое
+print(lemonCake.name)// после добавления опционалного инициализатора, xcode попросил тут добавить ? - примерно понял почему, но хочу чтобы понять наверняка
+lemonCake.getCost() //тут тоже самое
 
 class StandartBox: Box<Cake> {
 
@@ -113,16 +114,22 @@ class Basket: Box<Products> {
     //1. Написать в классе корзинки функцию, которая будет возвращать из массива товара только пирожные.
     //2. Написать в классе корзинки функцию, которая будет возвращать товары из корзинки, отсортированные по убыванию стоимости.
     //3. Написать функцию в классе корзинки, которая будет возвращать стоимость всех товаров, лежащих в корзинке.
-    func getOnlyCakes () -> Products {
-        getGood().filter {$0 is Cake} as! Products//as! Products - это предложил добавить xcode - понимаю что это связанно с опциональным типом Cake, но не очень понимаю суть
+    func getOnlyCakes () -> [Cake] {
+        getGood().compactMap {$0 as? Cake}
     }
-    func getGoodsSortedByCost() -> Products {
-        getGood().sorted {$0.cost < $1.cost} as! Products
+    func getGoodsSortedByCost() -> [Products] {
+        getGood().sorted {$0.cost > $1.cost}
     }
-    func getCostOfAllGoods() -> Products {
-        getGood().compactMap {$0.cost}.reduce(0, +) as! Products
+    func getCostOfAllGoods() -> Double {
+        getGood().compactMap {$0.cost}.reduce(0, +)
     }
 }
+var prod: [Products] = [Cake(cost: 100, taste: .chokolate, decoration: [.cream]), Book(cost:300)]
+
+var bask1 = Basket(things: prod)
+var result = bask1.getOnlyCakes()
+
+print(type(of: result))
 
 struct Book: Products {
     var cost: Double
@@ -139,17 +146,17 @@ struct Flower: Products {
     
 }
 
-var products: [Products] = [Cake(cost: 10, taste: .chokolate, decoration: [.cream, .cream])!, Flower(name: .rose, cost: 130), Book(cost: 100), Book(cost: 150)]
+var products: [Products] = [Cake(cost: 10, taste: .chokolate, decoration: [.cream, .cream]), Flower(name: .rose, cost: 130), Book(cost: 100), Book(cost: 150)]
 var bask = Basket(things: products)
 
 
 var box1 = Box<Cake>(things: [])
 var cake1 = Cake(cost: 10, taste: .chokolate, decoration: [.cream, .nuts])
-if let cake1 {
-    box1.addNewThing(newThing: cake1)
-}
+//if let cake1 {
+//    box1.addNewThing(newThing: cake1)
+//}
 
-box1.addNewThing(newThing: cake1!)
+box1.addNewThing(newThing: cake1)
 
 func optionalString(a:String?) -> String {
     a ?? "" // если а строка - вернется строка, а если а это nil врентся "" (пустая строка)
@@ -163,9 +170,9 @@ print(flowersBasket.getAllThingsInBox())
 var anyCakes = [Cake(cost: 10, taste: .chokolate, decoration: [.nuts])]
 var someCake: [Cake] = []
 for element in anyCakes {
-    if let element {
-        someCake.append(element)
-    }
+//    if let element {
+//        someCake.append(element)
+//    }
 }
 print(type(of: anyCakes))
 var simpleBox = StandartBox(things: someCake)

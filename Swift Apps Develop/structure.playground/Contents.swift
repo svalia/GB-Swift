@@ -180,6 +180,14 @@ class Automate: VendingAutomate<Drinks> {
     func getLemonade() -> [Lemonade] {
         getProducts().compactMap {$0 as? Lemonade}
     }
+    func drinkForUActivity(a: Person.Activity.TypeOfAvtivity) -> Drinks? {
+        switch a {
+        case .relax : getProducts().first
+        case .hardwork : getProducts().last
+        default : nil
+        }
+
+    }
     convenience init() {
         let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
         let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
@@ -221,6 +229,31 @@ struct Chokolate {
         self.name = name.rawValue
         self.cost = cost
     }
+}
+
+let someTypeOfChoko: Chokolate.TypeOfChoco = .dark
+
+class Person {
+    struct Activity {
+        enum TypeOfAvtivity {
+            case relax
+            case hardwork
+            case sleep
+        }
+    }
+}
+typealias TypeAct = Person.Activity.TypeOfAvtivity
+let some: TypeAct = .hardwork
+
+func getCountAct (a:TypeAct...) -> Int {
+    a.count
+}
+
+func getCountLemonade(a: Lemonade...) -> Int {
+    a.count
+}
+func getCountLem(a: Drinks...) -> Int {
+    a.compactMap {$0 as? Lemonade}.count
 }
 
 var drinksAutomate = Automate(products: [])
@@ -330,7 +363,7 @@ lemonad.printGet()
 
 print("Сортировка по цене: \(drinksAutomate.minCostToMaxCost())")
 
-protocol VendingAutomateProtocol{
+protocol VendingAutomateProtocol: AnyObject {
     associatedtype Products
     func start()
     func final()
@@ -338,6 +371,18 @@ protocol VendingAutomateProtocol{
     func addProduct(product: Products)
 }
 
+class TestStruct: VendingAutomateProtocol {
+    func getProducts() -> [Lemonade] {
+        []
+    }
+    
+    func addProduct(product: Lemonade) {
+        
+    }
+    
+    typealias Products = Lemonade    
+    
+}
 extension VendingAutomateProtocol {
     func start() {
         print("Старт")
@@ -460,3 +505,10 @@ n.forEach{element in
 }
 print(n.first{$0 > 3})
 print(n.last{$0 > 2})
+
+
+func varParam(a: String...) -> Int {
+    a.compactMap{$0.count}.reduce(0, +)
+}
+
+varParam(a: "Hello world", "Hello")
