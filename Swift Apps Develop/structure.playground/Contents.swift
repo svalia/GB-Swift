@@ -139,6 +139,10 @@ class VendingAutomate<T>: VendingAutomateProtocol {
     private var products: [T]
     init(products: [T]) {
         self.products = products
+        print("init")
+    }
+    deinit {
+        print("deinit")
     }
     func addProduct(product: T) {
         products.append(product)
@@ -160,6 +164,15 @@ class Automate: VendingAutomate<Drinks> {
     lazy var countDrinks: Int = {
         getProducts().count
     }()
+    var owner: AutomateOwner
+    
+    init(_ owner: AutomateOwner, _ goods: [Drinks]) {
+        self.owner = owner
+        super.init(products: goods)
+    }
+    deinit {
+        print("deinit")
+    }
     
     func setNewName(_ newName: String) {
         name = newName
@@ -188,11 +201,11 @@ class Automate: VendingAutomate<Drinks> {
         }
 
     }
-    convenience init() {
-        let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
-        let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
-        self.init(products: [cola, fanta])
-    }
+//    convenience init() {
+//        let cola = Lemonade(name: "Cola", cost: 10.0, size: .m, promoCode: .new(20.0))
+//        let fanta = Lemonade(name: "Fanta", cost: 15.0, size: .m, promoCode: .new(25.0))
+//        self.init(products: [cola, fanta])
+//    }
     
 }
 
@@ -256,10 +269,10 @@ func getCountLem(a: Drinks...) -> Int {
     a.compactMap {$0 as? Lemonade}.count
 }
 
-var drinksAutomate = Automate(products: [])
-drinksAutomate.start()
-drinksAutomate.addProduct(product: Lemonade(cost: 10, size: .l, promoCode: .happy(10)))
-drinksAutomate.countDrinks
+//var drinksAutomate = Automate(products: [])
+//drinksAutomate.start()
+//drinksAutomate.addProduct(product: Lemonade(cost: 10, size: .l, promoCode: .happy(10)))
+//drinksAutomate.countDrinks
 
 
 
@@ -353,15 +366,15 @@ var rosinka: Drinks = BootleOfWater(cost: 15)
 
 print(rosinka.cost)
 
-drinksAutomate.addProduct(product: BootleOfWater(cost: 5))
-lemonad.printGet()
-lemonad.randomCost()
-print(drinksAutomate.getProducts())
-rosinka.printGet()
-lemonad.printGet()
-
-
-print("Сортировка по цене: \(drinksAutomate.minCostToMaxCost())")
+//drinksAutomate.addProduct(product: BootleOfWater(cost: 5))
+//lemonad.printGet()
+//lemonad.randomCost()
+//print(drinksAutomate.getProducts())
+//rosinka.printGet()
+//lemonad.printGet()
+//
+//
+//print("Сортировка по цене: \(drinksAutomate.minCostToMaxCost())")
 
 protocol VendingAutomateProtocol: AnyObject {
     associatedtype Products
@@ -380,7 +393,7 @@ class TestStruct: VendingAutomateProtocol {
         
     }
     
-    typealias Products = Lemonade    
+    typealias Products = Lemonade
     
 }
 extension VendingAutomateProtocol {
@@ -512,3 +525,151 @@ func varParam(a: String...) -> Int {
 }
 
 varParam(a: "Hello world", "Hello")
+
+var lemonade1 = Lemonade(name: "Cola", cost: 100, size: .m, promoCode: .happy(10))
+var lemonade2 = lemonade1
+
+print(lemonade1.name)
+print(lemonade2.name)
+
+lemonade2.name = "Fanta"
+print(lemonade1.name)
+print(lemonade2.name)
+
+//var automat1 = Automate(products: [])
+//var automat2 = automat1
+//
+//print(automat1.name)
+//print(automat2.name)
+//
+//automat2.setNewName("1")
+//
+//print(automat1.name)
+//print(automat2.name)
+//
+////классы и замыкания ссылочные типы
+//print(automat1 === automat2)
+////var automat3 = Automate(products: [])
+//print(automat1 === automat3)
+
+let lemonad3 = Lemonade(name: "Sprite", cost: 100, size: .m, promoCode: .happy(20))
+
+var array = [3, 2]
+var array2 = array
+
+func getAddress(_ collection: UnsafeRawPointer) {
+    print(Int(bitPattern: collection))
+}
+getAddress(array)
+getAddress(array2)
+array.append(7)
+getAddress(array)
+getAddress(array2)
+
+//Создать класс кафе, в котором есть меню. В меню есть чай, кофе и пирожные.
+
+class Cafe1 {
+    struct Tea: MenuItem {
+        var name: String
+        var cost: Double
+    }
+    struct Cake: MenuItem {
+        var name: String
+        var cost: Double
+    }
+    struct Coffee: MenuItem {
+        var name: String
+        var cost: Double
+    }
+    var menu: [MenuItem]
+    
+    init(_ menu: [MenuItem]) {
+        self.menu = menu
+    }
+    func getOnlyTea() -> [Tea] {
+        menu.compactMap{$0 as? Tea}
+    }
+    func getOnlyTea() -> [MenuItem] {
+        menu.filter{$0 is Tea}
+    }
+    func getMenuItem100() -> [MenuItem] {
+        menu.filter{$0.cost > 100}
+    }
+}
+protocol MenuItem {
+    var name: String {get set}
+    var cost: Double {get set}
+    func costMultiply() -> Double
+}
+
+extension MenuItem {
+    func costMultiply() -> Double {
+        cost * 10
+    }
+}
+
+var tea: MenuItem = Cafe1.Tea(name: "Lipton", cost: 150)
+var cake: MenuItem = Cafe1.Cake(name: "Ecler", cost: 200)
+var coffee: MenuItem = Cafe1.Coffee(name: "Capochinno", cost: 180)
+
+var cafe12 = Cafe1([tea, cake, coffee])
+
+final class Cafe2: Cafe1 {
+    
+}
+
+var cafe23 = Cafe2([])
+print(cafe12.menu)
+print(cafe23.menu)
+
+//var vAutomat: VendingAutomate? = VendingAutomate(products: [])
+//vAutomat = nil
+
+class AutomateOwner {
+    var name = "Semen"
+    weak var automatDrink: Automate?
+    lazy var secondName = {[weak self] in
+        self?.name ?? "Semen" + " owner"
+    }
+    init() {
+        print("init")
+    }
+    deinit {
+        print("deinit")
+    }
+}
+
+var owner1: AutomateOwner? = AutomateOwner()
+if let owner1 {
+    var drinkAutomate: Automate? = Automate(owner1, [])
+    owner1.automatDrink = drinkAutomate
+    drinkAutomate = nil
+}
+print(owner1)
+
+var one = 1
+var two = 2
+var three = 3
+
+let a1 = {[one, two, three] in
+    one + two + three
+}
+print(a1())
+
+one = 3
+two = 1
+three = 7
+
+print(a1())
+print(one)
+
+class Test1 {
+    struct Test2 {
+        var number: Int?
+    }
+    var d: Test2?
+}
+
+var g1: Test1? = Test1()
+
+print(g1?.d?.number)
