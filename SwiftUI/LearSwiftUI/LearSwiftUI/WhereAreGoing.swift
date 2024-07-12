@@ -13,18 +13,9 @@ struct WhereAreGoing: View {
         ZStack {
             Color(#colorLiteral(red: 0.6358144879, green: 0.07771249861, blue: 0.01419980079, alpha: 1)).ignoresSafeArea()
             VStack {
-                HStack {
-                    Spacer()
-                    Text("Куда пойти?")
+                Text("Куда пойти?")
                         .font(.title)
                         .foregroundStyle(.white)
-                    Spacer()
-                    Image(systemName: "xmark.circle.fill")
-                        .onTapGesture {
-                            closeIcon()
-                        }
-                    Spacer()
-                }
                 Spacer()
                 DescriptionItem(imageName: "figure.walk", textName: "Всегда актуальные события", iconColor: .yellow)
                 DescriptionItem(imageName: "plus.circle.fill", textName: "Новое событие каждый день", iconColor: .green)
@@ -34,6 +25,13 @@ struct WhereAreGoing: View {
             }
                 
         }
+        .navigationTitle("New Screen 2")
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton {closeIcon()}
+            }
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 #Preview {

@@ -15,6 +15,11 @@
 		1360C87E2C35D4E30093F1EA /* DescriptionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1360C87D2C35D4E30093F1EA /* DescriptionItem.swift */; };
 		1360C8802C3871F60093F1EA /* WhereAreGoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1360C87F2C3871F60093F1EA /* WhereAreGoing.swift */; };
 		1360C8822C3875E10093F1EA /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1360C8812C3875E10093F1EA /* ButtonView.swift */; };
+		13CBD8172C3EE01A003A8483 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBD8162C3EE01A003A8483 /* BackButton.swift */; };
+		13CBD8192C3EE3A2003A8483 /* NewScreen3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBD8182C3EE3A2003A8483 /* NewScreen3.swift */; };
+		13CBD8232C41831B003A8483 /* VScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBD8222C41831B003A8483 /* VScrollView.swift */; };
+		13CBD8252C418607003A8483 /* HScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBD8242C418607003A8483 /* HScrollView.swift */; };
+		13CBD8272C418729003A8483 /* NewTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CBD8262C418729003A8483 /* NewTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		1360C87D2C35D4E30093F1EA /* DescriptionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionItem.swift; sourceTree = "<group>"; };
 		1360C87F2C3871F60093F1EA /* WhereAreGoing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereAreGoing.swift; sourceTree = "<group>"; };
 		1360C8812C3875E10093F1EA /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		13CBD8162C3EE01A003A8483 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		13CBD8182C3EE3A2003A8483 /* NewScreen3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScreen3.swift; sourceTree = "<group>"; };
+		13CBD8222C41831B003A8483 /* VScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VScrollView.swift; sourceTree = "<group>"; };
+		13CBD8242C418607003A8483 /* HScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HScrollView.swift; sourceTree = "<group>"; };
+		13CBD8262C418729003A8483 /* NewTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +73,13 @@
 				1360C86F2C35CE210093F1EA /* ContentView.swift */,
 				1360C87F2C3871F60093F1EA /* WhereAreGoing.swift */,
 				1360C87B2C35D2660093F1EA /* NewScreen.swift */,
+				13CBD8182C3EE3A2003A8483 /* NewScreen3.swift */,
 				1360C8812C3875E10093F1EA /* ButtonView.swift */,
 				1360C87D2C35D4E30093F1EA /* DescriptionItem.swift */,
+				13CBD8162C3EE01A003A8483 /* BackButton.swift */,
+				13CBD8222C41831B003A8483 /* VScrollView.swift */,
+				13CBD8242C418607003A8483 /* HScrollView.swift */,
+				13CBD8262C418729003A8483 /* NewTabView.swift */,
 				1360C8712C35CE220093F1EA /* Assets.xcassets */,
 				1360C8732C35CE220093F1EA /* Preview Content */,
 			);
@@ -149,11 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13CBD8252C418607003A8483 /* HScrollView.swift in Sources */,
+				13CBD8192C3EE3A2003A8483 /* NewScreen3.swift in Sources */,
 				1360C8702C35CE210093F1EA /* ContentView.swift in Sources */,
 				1360C8802C3871F60093F1EA /* WhereAreGoing.swift in Sources */,
+				13CBD8272C418729003A8483 /* NewTabView.swift in Sources */,
 				1360C8822C3875E10093F1EA /* ButtonView.swift in Sources */,
 				1360C86E2C35CE210093F1EA /* LearSwiftUIApp.swift in Sources */,
 				1360C87C2C35D2660093F1EA /* NewScreen.swift in Sources */,
+				13CBD8232C41831B003A8483 /* VScrollView.swift in Sources */,
+				13CBD8172C3EE01A003A8483 /* BackButton.swift in Sources */,
 				1360C87E2C35D4E30093F1EA /* DescriptionItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

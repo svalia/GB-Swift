@@ -24,24 +24,20 @@ struct NewScreen: View {
                 DescriptionItem(imageName: "cloud.rain.fill", textName: "Подскажем, когда необходимо взять зонт", iconColor: .blue)
                 DescriptionItem(imageName: "snowflake", textName: "Не дадим замерзнуть", iconColor: .white)
                 Spacer()
-                ButtonView{                 print("Tap1")
+                ButtonView{                 
+                    print("Tap1")
                     isSheet.toggle()
                 }
-                .fullScreenCover(isPresented: $isSheet, content: {
-                    WhereAreGoing()
-                })
+
             }
+        }
+        .navigationDestination(isPresented: $isSheet) {
+            WhereAreGoing()
         }
         .navigationTitle("New Screen")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button {
-                    back()
-                }
-            label: {
-                Image(systemName: "arrowshape.left.fill")
-
-            }
+                BackButton {back()}
             }
         }
         .navigationBarBackButtonHidden(true)

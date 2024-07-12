@@ -11,7 +11,7 @@ import SwiftUI
 struct LearSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NewTabView()
         }
     }
 }

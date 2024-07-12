@@ -9,6 +9,7 @@ import SwiftUI
 struct DescriptionItem: View {
     var imageName: String
     var textName: String
+    var textColor: Color = .white
     var iconColor: Color
     var body: some View {
         HStack{
@@ -20,8 +21,9 @@ struct DescriptionItem: View {
                 .frame(width: 35.0, height: 35.0)
             Text(textName)
                 .font(.body)
-                .foregroundStyle(.white)
+                .foregroundStyle(textColor)
             Spacer()
+                
         }
     }
     
